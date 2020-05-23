@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { getProducts } from '../services/fakeProductsService'
-import AmazonLogo from '../assets/Amazon_logo.svg'
-import CTAList from './ctaList'
+import { getProducts } from '../../services/fakeProductsService'
+import AmazonLogo from '../../assets/Amazon_logo.svg'
+import CTAList from '..//cta-list/ctaList'
 
 class Products extends Component {
   state = {
@@ -30,7 +30,7 @@ class Products extends Component {
         <div className="row">
           {
             products.map(product => (
-              <div key={product._id} className="col-sm-6 col-lg-4 mt-4 md-4">
+              <div key={product._id} className="col-sm-6 col-lg-4 mt-4 md-4" data-testid="product-item">
                 <div className="card">
                   <div className="card-body">
                     <img src={AmazonLogo} className="card-img-top" alt={"Amazon Prime Placeholder"}/>
@@ -38,8 +38,6 @@ class Products extends Component {
                     <p className="card-text mt-2">{product.description}</p>
                     <CTAList
                       onDelete={() => this.handleDelete(product)}
-                      product={product}
-                      products={products}
                     />
                   </div>
                 </div>
