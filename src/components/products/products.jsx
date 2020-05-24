@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { getProducts } from '../../services/fakeProductsService'
 import Pagination from '../pagination/pagination'
 import ResultList from '../result-list/resultList'
+import SearchBox from '../search-box/searchBox'
 
 class Products extends Component {
   state = {
@@ -15,7 +16,6 @@ class Products extends Component {
   }
 
   handleDelete = (item) => {
-    console.log(item)
     const products = this.state.products.filter(p => p._id !== item._id);
     this.setState({ products });
   }
@@ -42,20 +42,20 @@ class Products extends Component {
     const { pageSize, currentPage } = this.state;
     const { totalCount, currentPageData: products } = this.getPagedData();
 
-    if (totalCount === 0) return <h1>The products ran out.</h1>
-
     return (
       <React.Fragment>
-        <p>We found {totalCount} products for you.</p>
-        <button
-          onClick={this.handleReset}
-          className="btn btn-primary">Reset</button>
-        <ResultList
-          results={products}
-          onDelete={this.handleDelete}
-        />
+        <SearchBox />
+
+        {totalCount === 0 && (<h1>The products ran out.</h1>)}
+        {totalCount !== 0 && (
+          <ResultList
+            totalResultAmount={totalCount}
+            results={products}
+            onDelete={this.handleDelete}
+          />
+        )}
         <Pagination
-          itemsAmount={totalCount}
+          totalResultAmount={totalCount}
           pageSize={pageSize}
           currentPage={currentPage}
           onPageChange={this.handlePageChange}

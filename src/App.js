@@ -5,10 +5,12 @@ import './App.css';
 
 function App() {
   return (
-    <main className="container"> 
+    <React.Fragment>
       <NavBar />
-      <Products />
-    </main>
+      <main className="container"> 
+        <Products />
+      </main>
+    </React.Fragment>
   );
 }
 

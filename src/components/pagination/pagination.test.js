@@ -8,7 +8,7 @@ const currentPage = 1;
 test("Pagination should have at least one button shows 1", () => { 
   
   const { getByText } = render(<Pagination
-    itemsAmount={totalCount}
+    totalResultAmount={totalCount}
     pageSize={pageSize}
     currentPage={currentPage}/>);
   expect(getByText("1")).toBeInTheDocument();
