@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { getProducts } from '../../services/fakeProductsService'
+import { getCategories } from '../../services/fakeCategoriesService';
 import Pagination from '../pagination/pagination'
 import ResultList from '../result-list/resultList'
 import SearchBox from '../search-box/searchBox'
@@ -7,13 +8,14 @@ import SearchBox from '../search-box/searchBox'
 class Products extends Component {
   state = {
     products: [],
+    categories: [],
     pageSize: 3,
     currentPage: 1,
     searchCategory: ""
   }
 
   handleReset = () => { 
-    this.setState({ products: getProducts() });
+    this.setState({ products: getProducts(), searchCategory: "" });
   }
 
   handleDelete = (item) => {
@@ -26,6 +28,7 @@ class Products extends Component {
   }
 
   handleSearchChange = (value) => {
+    console.log("search word: ", value);
     this.setState({ searchCategory: value });
   }
 
@@ -47,13 +50,18 @@ class Products extends Component {
   }
 
   render() { 
-    const { pageSize, currentPage } = this.state;
+    const { categories, searchCategory, pageSize, currentPage } = this.state;
     const { totalCount, currentPageData: products } = this.getPagedData();
+
+    let categoriesNames = categories.map(c => c.name);
 
     return (
       <React.Fragment>
         <SearchBox
-          onChange={this.handleSearchChange}
+          searchQuery={searchCategory}
+          options={categoriesNames}
+          onReset={this.handleReset}
+          onSearch={this.handleSearchChange}
         />
         {totalCount === 0 && (<h1>The products ran out.</h1>)}
         {totalCount !== 0 && (
@@ -76,7 +84,8 @@ class Products extends Component {
 
   componentDidMount() { 
     const products = getProducts();
-    this.setState({ products });
+    const categories = getCategories();
+    this.setState({ products, categories });
   }
 
 }

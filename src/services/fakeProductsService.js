@@ -3,7 +3,7 @@ import * as categoriesAPI from "./fakeCategoriesService";
 const products = [
   {
     _id: "5b21ca3eeb7f6fbccd471815",
-    title: "The Anunnaki Chronicles: A Zecharia Sitchin Reader",
+    title: "The Anunnaki Chronicles",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam lobortis nulla a tincidunt facilisis. Fusce eu elementum felis. In hac habitasse platea dictumst. Fusce nibh nisi, consectetur a augue in, feugiat euismod risus. Vestibulum id purus ac sapien mollis lobortis. Ut aliquam ultrices magna fermentum vulputate.",
     category: { _id: "5b21ca3eeb7f6fbccd471818", name: "Books" },
     numberInStock: 6,
@@ -28,7 +28,7 @@ const products = [
   },
   {
     _id: "5b21ca3eeb7f6fbccd471819",
-    title: "Adeobe Content Manager",
+    title: "Adobe Content Manager",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam lobortis nulla a tincidunt facilisis. Fusce eu elementum felis. In hac habitasse platea dictumst. Fusce nibh nisi, consectetur a augue in, feugiat euismod risus. Vestibulum id purus ac sapien mollis lobortis. Ut aliquam ultrices magna fermentum vulputate.",
     category: { _id: "5b21ca3eeb7f6fbccd471814", name: "Softwares" },
     numberInStock: 7,

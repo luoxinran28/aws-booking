@@ -20,7 +20,8 @@ const ResultList = (props) => {
               <div className="card">
                 <div className="card-body">
                   <img src={AmazonLogo} className="card-img-top" alt={"Amazon Prime Placeholder"}/>
-                  <h5 className="card-title mt-4">{result.title}</h5>
+                  <h2 className="card-title mt-4">{result.title}</h2>
+                  <h5 className="card-title mt-2">{result.category.name}</h5>
                   <p className="card-text mt-2">{result.description}</p>
                   <CTAList
                     onDelete={() => handleDelete(result)}
