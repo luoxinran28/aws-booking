@@ -10,26 +10,28 @@ class SearchBox extends Component {
   handleTextChange = (e) => {
     const { options } = this.props;
     const value = e.currentTarget.value;
-    if (value.length === 0) {
-      this.setState({ suggestions: [] });
-    } else { 
-      // Process suggestions from all options
-      let suggestions = options.filter(option => option.toLowerCase().startsWith(value));
-      // Set search query based on typed text
-      this.setState({ searchQuery: value, suggestions});
-    }
+
+    // Process suggestions from all options
+    let suggestions = options.filter(option => option.toLowerCase().startsWith(value));
+    // Set search query based on typed text
+    this.setState({ searchQuery: value, suggestions});
   }
   
   handleSearch = () => {
     const { onSearch } = this.props;
-    const { searchQuery } = this.state;
+    this.setState({ suggestions: [] });
+    onSearch(this.state.searchQuery);
+  }
 
-    onSearch(searchQuery);
+  handleSelectOption = (selection) => {
+    const { onSearch } = this.props;
+    this.setState({ searchQuery: selection, suggestions: [] });
+    onSearch(selection);
   }
 
   handleReset = () => {
     const { onReset } = this.props;
-    this.setState({ searchQuery: "" });
+    this.setState({ searchQuery: "", suggestions: [] });
     onReset();
   }
 
@@ -42,6 +44,7 @@ class SearchBox extends Component {
         <div className="search-box form-inline justify-content-center mt-3">
           <input
             type="text"
+            value={this.state.searchQuery || ""}
             className="form-control mx-2 w-50"
             aria-label="Search the categories"
             placeholder="Search the categories ..."
@@ -55,6 +58,7 @@ class SearchBox extends Component {
             onClick={this.handleReset}
             className="btn btn-primary mx-1">Reset</button>
           <Autocomplete
+            onSelect={this.handleSelectOption}
             options={suggestions}
           />
         </div>

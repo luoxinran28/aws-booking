@@ -28,7 +28,6 @@ class Products extends Component {
   }
 
   handleSearchChange = (value) => {
-    console.log("search word: ", value);
     this.setState({ searchCategory: value });
   }
 
