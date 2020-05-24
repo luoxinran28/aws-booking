@@ -8,7 +8,8 @@ class Products extends Component {
   state = {
     products: [],
     pageSize: 3,
-    currentPage: 1
+    currentPage: 1,
+    searchCategory: ""
   }
 
   handleReset = () => { 
@@ -24,18 +25,25 @@ class Products extends Component {
     this.setState({ currentPage });
   }
 
+  handleSearchChange = (value) => {
+    this.setState({ searchCategory: value });
+  }
+
   getPagedData = () => {
-    const { products: allProducts, pageSize, currentPage } = this.state;
+    const { products, pageSize, currentPage, searchCategory } = this.state;
+
+    let allProducts = products;
+    if (searchCategory) { 
+      let lowSearchCategory = searchCategory.toLowerCase();
+      allProducts = allProducts.filter(item =>
+        item.category.name.toLowerCase().startsWith(lowSearchCategory));
+    }
+
     const startIndex = (currentPage - 1) * pageSize;
     let endIndex = (currentPage) * pageSize - 1;
     endIndex = endIndex >= allProducts.length ? allProducts.length - 1 : endIndex;
     const currentPagedData = allProducts.slice(startIndex, endIndex + 1);
     return { totalCount: allProducts.length, currentPageData: currentPagedData};
-  }
-
-  componentDidMount() { 
-    const products = getProducts();
-    this.setState({ products });
   }
 
   render() { 
@@ -44,8 +52,9 @@ class Products extends Component {
 
     return (
       <React.Fragment>
-        <SearchBox />
-
+        <SearchBox
+          onChange={this.handleSearchChange}
+        />
         {totalCount === 0 && (<h1>The products ran out.</h1>)}
         {totalCount !== 0 && (
           <ResultList
@@ -64,6 +73,12 @@ class Products extends Component {
 
     );
   }
+
+  componentDidMount() { 
+    const products = getProducts();
+    this.setState({ products });
+  }
+
 }
  
 export default Products;
