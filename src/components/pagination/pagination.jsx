@@ -4,7 +4,6 @@ import React from 'react';
 const Pagination = (props) => {
   const { itemsAmount, pageSize, currentPage, onPageChange } = props;
   const pagesCount = Math.ceil(itemsAmount / pageSize);
-  console.log(pagesCount);
   const pages = getPagesArray(pagesCount);
 
   return (

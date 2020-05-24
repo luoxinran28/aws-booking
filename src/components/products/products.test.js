@@ -2,10 +2,14 @@ import React from 'react';
 import { render, fireEvent, screen} from '@testing-library/react';
 import Products from './products'
 
-test("We should see product cards have been displayed.", () => {   
-  const { getAllByTestId, container } = render(<Products />);
-  console.log(container.querySelector(".card"));
-  expect(container.querySelector(".card")).toBeInTheDocument();
+test("We should see pagination", () => {   
+  const { container } = render(<Products />);
+  expect(container.querySelector(".pagination")).toBeInTheDocument();
+});
+
+test("We should see result list", () => {   
+  const { container } = render(<Products />);
+  expect(container.querySelector(".result-list")).toBeInTheDocument();
 });
 
 // test("Delete buttons", () => {   
