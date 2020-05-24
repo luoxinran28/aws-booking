@@ -2,10 +2,13 @@ import React, { Component } from 'react'
 import { getProducts } from '../../services/fakeProductsService'
 import AmazonLogo from '../../assets/Amazon_logo.svg'
 import CTAList from '..//cta-list/ctaList'
+import Pagination from '../pagination/pagination'
 
 class Products extends Component {
   state = {
-    products: getProducts()
+    products: [],
+    pageSize: 3,
+    currentPage: 1
   }
 
   handleReset = () => { 
@@ -17,9 +20,20 @@ class Products extends Component {
     this.setState({ products });
   }
 
+  handlePageChange = (currentPage) => {
+    this.setState({ currentPage });
+  }
+
+  componentDidMount() { 
+    const products = getProducts();
+    this.setState({ products });
+  }
+
   render() { 
-    const { products } = this.state;
-    if(products.length === 0) return <h1>The products ran out.</h1>
+    const { products, pageSize, currentPage } = this.state;
+    const totalCount = products.length;
+
+    if (totalCount === 0) return <h1>The products ran out.</h1>
 
     return (
       <React.Fragment>
@@ -45,6 +59,12 @@ class Products extends Component {
             ))
           }
         </div>
+        <Pagination
+          itemsAmount={totalCount}
+          pageSize={pageSize}
+          currentPage={currentPage}
+          onPageChange={this.handlePageChange}
+        />
       </React.Fragment>
 
     );
