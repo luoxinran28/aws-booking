@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import AmazonLogo from '../../assets/Amazon_logo.svg'
 import CTAList from '..//cta-list/ctaList'
 

@@ -6,16 +6,16 @@ const Autocomplete = (props) => {
   function renderSuggestion(options) { 
     if (!options || options.length === 0) return null;
     return (
-      <ul>
+      <ul className="list-group ">
         {options.map((option) => (
-          <li key={option}><span>{option}</span></li>
+          <li className="list-group-item list-group-item-action" key={option}><span>{option}</span></li>
         ))}
       </ul> 
     )
   }
 
   return (
-    <div className="autocomplete">
+    <div className="autocomplete d-flex mt-1">
       {renderSuggestion(options)}
     </div>
   );

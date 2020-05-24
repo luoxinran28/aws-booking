@@ -8,15 +8,15 @@ class SearchBox extends Component {
   }
 
   handleTextChange = (e) => {
+    const { options } = this.props;
     const value = e.currentTarget.value;
     if (value.length === 0) {
       this.setState({ suggestions: [] });
     } else { 
       // Process suggestions from all options
-      let suggestions = this.state.suggestions;
-
+      let suggestions = options.filter(option => option.toLowerCase().startsWith(value));
       // Set search query based on typed text
-      this.setState({ searchQuery: value });
+      this.setState({ searchQuery: value, suggestions});
     }
   }
   
@@ -39,10 +39,10 @@ class SearchBox extends Component {
 
     return (
       <React.Fragment>
-        <div className="form-inline justify-content-center">
+        <div className="search-box form-inline justify-content-center mt-3">
           <input
             type="text"
-            className="form-control my-3 mx-2 w-50"
+            className="form-control mx-2 w-50"
             aria-label="Search the categories"
             placeholder="Search the categories ..."
             onChange={this.handleTextChange}
@@ -54,10 +54,10 @@ class SearchBox extends Component {
           <button
             onClick={this.handleReset}
             className="btn btn-primary mx-1">Reset</button>
+          <Autocomplete
+            options={suggestions}
+          />
         </div>
-        <Autocomplete
-          options={suggestions}
-        />
       </React.Fragment>
     );
   }
