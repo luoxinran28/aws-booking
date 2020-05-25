@@ -9,10 +9,21 @@ const ResultList = (props) => {
   function handleDelete(item) { 
     onDelete(item);
   }
+  
+  function handleShowMore(e) {
+    const target = e.currentTarget.parentElement;
+    if (!target.querySelector(".expanded")) {
+      target.querySelector(".card-text").classList.add("expanded");
+      target.querySelector(".show-more").innerText = "Show Less";
+    } else { 
+      target.querySelector(".card-text").classList.remove("expanded");
+      target.querySelector(".show-more").innerText = "Show More";
+    }
+  }
 
   return (
     <React.Fragment>
-      <p className="mt-2 mb-0">We found { totalResultAmount } products for you.</p>
+      <p className="description mb-0">We found <b>{ totalResultAmount }</b> products for you.</p>
       <div className="result-list row">
         {
           results.map(result => (
@@ -20,9 +31,12 @@ const ResultList = (props) => {
               <div className="card">
                 <div className="card-body">
                   <img src={AmazonLogo} className="card-img-top" alt={"Amazon Prime Placeholder"}/>
-                  <h2 className="card-title mt-4">{result.title}</h2>
-                  <h5 className="card-title mt-2">{result.category.name}</h5>
-                  <p className="card-text mt-2">{result.description}</p>
+                  <h3 className="title card-title mt-4">{result.title}</h3>
+                  <h5 className="category card-title mt-2">{result.category.name}</h5>
+                  <div className="description">
+                    <p className="card-text mt-2">{result.description}</p>
+                    <span className="show-more d-flex justify-content-center mb-2" onClick={handleShowMore}>Show More</span>
+                  </div>
                   <CTAList
                     onDelete={() => handleDelete(result)}
                   />

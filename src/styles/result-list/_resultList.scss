@@ -1,0 +1,11 @@
+.card-text {
+  height: 110px;
+  overflow-y: hidden;
+  &.expanded {
+    height: initial;
+  }
+}
+.show-more {
+  color: #0286e8;
+  cursor: pointer;
+}

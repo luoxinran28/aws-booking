@@ -4,9 +4,12 @@
   z-index: 100;
 }
 
-@media (min-width: 0) and (max-width: 992px) {
+@media (min-width: 0)  {
   .list-group {
     width: 400px;
+    height: 250px;
+    overflow-x: scroll;
+    border-bottom: 1px solid rgba(0,0,0,.125);
   }
 }
 

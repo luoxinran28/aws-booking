@@ -3,7 +3,7 @@ import * as categoriesAPI from "./fakeCategoriesService";
 const products = [
   {
     _id: "5b21ca3eeb7f6fbccd471815",
-    title: "The Anunnaki Chronicles",
+    title: "AWS S3",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam lobortis nulla a tincidunt facilisis. Fusce eu elementum felis. In hac habitasse platea dictumst. Fusce nibh nisi, consectetur a augue in, feugiat euismod risus. Vestibulum id purus ac sapien mollis lobortis. Ut aliquam ultrices magna fermentum vulputate.",
     category: { _id: "5b21ca3eeb7f6fbccd471818", name: "Apps" },
     numberInStock: 6,

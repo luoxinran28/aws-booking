@@ -57,7 +57,7 @@ class SearchBox extends Component {
         <div className="search-box form-inline justify-content-center mt-3">
           <input
             type="text"
-            value={this.state.searchQuery || ""}
+            value={this.state.searchQuery}
             className="form-control mx-2 w-50"
             aria-label="Search the categories"
             placeholder="Search the categories ..."
