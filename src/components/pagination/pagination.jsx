@@ -7,7 +7,7 @@ const Pagination = (props) => {
   const pages = getPagesArray(pagesCount);
 
   return (
-    <nav><ul className="pagination mt-2">
+    <nav><ul className="pagination justify-content-center mt-2">
       {pages.map(page => (
         <li
           key={page}

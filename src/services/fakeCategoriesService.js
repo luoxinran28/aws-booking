@@ -1,5 +1,5 @@
 export const categories = [
-  { _id: "6b21ca3eeb7f6fb57k3j9923", name: "All Departments" },
+  { _id: "6b21ca3eeb7f6fb57k3j9923", name: "All-star Pikachu Pokemon" },
   {
     _id: "6b21ca3eeb7f6fbbd4wj6gmu",
     name: "Audible Books & Originals",
@@ -8,10 +8,10 @@ export const categories = [
   { _id: "6b21ca3eeb7f6fbw6ghoszv7", name: "Amazon Devices" },
   { _id: "6b21ca3eeb7f6fbuv6nhvnm5", name: "Amazon Warehouse" },
   { _id: "6b21ca3eeb7f6fb2j7ecpzlz", name: "Appliances" },
-  { _id: "6b21ca3eeb7f6fbkddlgvuff", name: "Apps & Games" },
+  { _id: "6b21ca3eeb7f6fbkddlgvuff", name: "Apps" },
+  { _id: "6b21ca3eeb7f6fbtoxi2qzm4", name: "Airpnp" },
   { _id: "6b21ca3eeb7f6fbwvg8d88ou", name: "Arts, Crafts & Sewing" },
-  { _id: "6b21ca3eeb7f6fbsc72dynzx", name: "Automotive Parts & Accessories" },
-  { _id: "6b21ca3eeb7f6fbtoxi2qzm4", name: "Baby" },
+  { _id: "6b21ca3eeb7f6fbsc72dynzx", name: "Automotive Parts & Repairs" },
   { _id: "6b21ca3eeb7f6fb98fvt5lxu", name: "Beauty & Personal Care" },
   { _id: "6b21ca3eeb7f6fbcbytihlob", name: "Books" },
   { _id: "6b21ca3eeb7f6fb1j06faiun", name: "CDs & Vinyl" },

@@ -18,21 +18,34 @@ class SearchBox extends Component {
   }
   
   handleSearch = () => {
-    const { onSearch } = this.props;
-    this.setState({ suggestions: [] });
-    onSearch(this.state.searchQuery);
+    // this.setState({ suggestions: [] });
+    // this.props.onSearch(this.state.searchQuery);
+    this.searchInProps();
   }
 
   handleSelectOption = (selection) => {
-    const { onSearch } = this.props;
-    this.setState({ searchQuery: selection, suggestions: [] });
-    onSearch(selection);
+    this.searchInProps(selection);
+    this.setState({ searchQuery: selection});
   }
 
   handleReset = () => {
-    const { onReset } = this.props;
     this.setState({ searchQuery: "", suggestions: [] });
-    onReset();
+    this.props.onReset();
+  }
+
+  handleKeyDown = (e) => {
+    if (e.keyCode === 27) { // Escapte
+      this.setState({ suggestions: [] });
+    }
+    if (e.keyCode === 13) { // Enter
+      this.searchInProps();
+    }
+  }
+
+  searchInProps = (query) => {
+    if (!query) query = this.state.searchQuery;
+    this.setState({ suggestions: [] });
+    this.props.onSearch(query);
   }
 
   render() { 
@@ -49,6 +62,7 @@ class SearchBox extends Component {
             aria-label="Search the categories"
             placeholder="Search the categories ..."
             onChange={this.handleTextChange}
+            onKeyDown={this.handleKeyDown}
           />
           <button
             className="btn btn-primary mx-1"
@@ -65,6 +79,8 @@ class SearchBox extends Component {
       </React.Fragment>
     );
   }
+
+
 }
  
 export default SearchBox;

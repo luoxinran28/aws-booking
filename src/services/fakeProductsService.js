@@ -5,16 +5,16 @@ const products = [
     _id: "5b21ca3eeb7f6fbccd471815",
     title: "The Anunnaki Chronicles",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam lobortis nulla a tincidunt facilisis. Fusce eu elementum felis. In hac habitasse platea dictumst. Fusce nibh nisi, consectetur a augue in, feugiat euismod risus. Vestibulum id purus ac sapien mollis lobortis. Ut aliquam ultrices magna fermentum vulputate.",
-    category: { _id: "5b21ca3eeb7f6fbccd471818", name: "Books" },
+    category: { _id: "5b21ca3eeb7f6fbccd471818", name: "Apps" },
     numberInStock: 6,
     rating: 2.5,
     publishDate: "2018-01-03T19:04:28.809Z"
   },
   {
     _id: "5b21ca3eeb7f6fbccd471816",
-    title: "Becoming",
+    title: "Becoming a Pikachu",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam lobortis nulla a tincidunt facilisis. Fusce eu elementum felis. In hac habitasse platea dictumst. Fusce nibh nisi, consectetur a augue in, feugiat euismod risus. Vestibulum id purus ac sapien mollis lobortis. Ut aliquam ultrices magna fermentum vulputate.",
-    category: { _id: "5b21ca3eeb7f6fbccd471818", name: "Books" },
+    category: { _id: "5b21ca3eeb7f6fbccd471818", name: "All-star Pikachu Pokemon" },
     numberInStock: 5,
     rating: 2.5
   },
@@ -30,7 +30,7 @@ const products = [
     _id: "5b21ca3eeb7f6fbccd471819",
     title: "Adobe Content Manager",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam lobortis nulla a tincidunt facilisis. Fusce eu elementum felis. In hac habitasse platea dictumst. Fusce nibh nisi, consectetur a augue in, feugiat euismod risus. Vestibulum id purus ac sapien mollis lobortis. Ut aliquam ultrices magna fermentum vulputate.",
-    category: { _id: "5b21ca3eeb7f6fbccd471814", name: "Softwares" },
+    category: { _id: "5b21ca3eeb7f6fbccd471814", name: "Apps" },
     numberInStock: 7,
     rating: 3.5
   },
@@ -46,7 +46,7 @@ const products = [
     _id: "5b21ca3eeb7f6fbccd47181b",
     title: "Dell Technologies VMware",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam lobortis nulla a tincidunt facilisis. Fusce eu elementum felis. In hac habitasse platea dictumst. Fusce nibh nisi, consectetur a augue in, feugiat euismod risus. Vestibulum id purus ac sapien mollis lobortis. Ut aliquam ultrices magna fermentum vulputate.",
-    category: { _id: "5b21ca3eeb7f6fbccd471814", name: "Softwares" },
+    category: { _id: "5b21ca3eeb7f6fbccd471814", name: "Automotive Parts & Repairs" },
     numberInStock: 7,
     rating: 3.5
   },
@@ -70,7 +70,7 @@ const products = [
     _id: "5b21ca3eeb7f6fbccd471821",
     title: "The Bad Guys (The Bad Guys #1)",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam lobortis nulla a tincidunt facilisis. Fusce eu elementum felis. In hac habitasse platea dictumst. Fusce nibh nisi, consectetur a augue in, feugiat euismod risus. Vestibulum id purus ac sapien mollis lobortis. Ut aliquam ultrices magna fermentum vulputate.",
-    category: { _id: "5b21ca3eeb7f6fbccd471818", name: "Books" },
+    category: { _id: "5b21ca3eeb7f6fbccd471818", name: "Appliances" },
     numberInStock: 7,
     rating: 3.5
   }
