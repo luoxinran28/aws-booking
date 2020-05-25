@@ -80,6 +80,12 @@ class SearchBox extends Component {
     );
   }
 
+  componentDidMount() {
+    document.addEventListener("click", (e) => { 
+      if (e.target.classList.contains("autocomplete")) return;
+      this.setState({ suggestions: [] });
+    });
+  }
 
 }
  

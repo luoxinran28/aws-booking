@@ -1,12 +1,9 @@
-import React, { Component }from 'react'
+import React from 'react'
 
-class Autocomplete extends Component {
+const Autocomplete = (props) => {
+  const { options, onSelect } = props;
 
-  state = {}
-
-  renderSuggestion = () => { 
-    const { options, onSelect } = this.props;
-
+  function renderSuggestion (options) { 
     if (!options || options.length === 0) return null;
     return (
       <ul className="list-group ">
@@ -20,13 +17,11 @@ class Autocomplete extends Component {
     )
   }
 
-  render() { 
-    return (
-      <div className="autocomplete d-flex mt-1">
-        {this.renderSuggestion()}
-      </div>
-    );
-  }
+  return (
+    <div className="autocomplete d-flex mt-1">
+      {renderSuggestion(options)}
+    </div>
+  );
 }
  
 export default Autocomplete;
