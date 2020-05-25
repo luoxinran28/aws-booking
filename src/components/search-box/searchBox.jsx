@@ -17,7 +17,7 @@ class SearchBox extends Component {
   handleTextChange = (e) => {
     const value = e.currentTarget.value.toLowerCase().replace(/[^A-Z^a-z^0-9^\s]/g, '');
     // Process suggestions from all options
-    let suggestions = this.state.trie.search(value);
+    let suggestions = this.state.trie.search(value.trim());
     this.setState({ searchQuery: value, suggestions});
   }
   

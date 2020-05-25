@@ -4,30 +4,10 @@ export default class Trie {
     this.mapping = new Map(); // Used to map the lower case value to original value
   }
 
-  /*
-  For example:
-  "All-star Pikachu Pokemon" will be mapped to:
-
-  "allstar pikachu pokemon": "All-star Pikachu Pokemon"
-  "allstar": "All-star Pikachu Pokemon"
-  "pikachu": "All-star Pikachu Pokemon"
-  "pokemon": "All-star Pikachu Pokemon"
-  
-  */
-  mapToOrignalString(searchString, originalString) { 
-    if (!searchString || searchString.length === 0) return;
-    this.mapping.set(searchString, originalString);
-  }
-
-  getOriginalString(string) { 
-    return this.mapping.get(string);
-  }
-
   add(wordString) {
     if (wordString === null || wordString.length === 0) return;
 
-    let searchString = wordString.toLowerCase().replace(/[^A-Z^a-z^0-9^\s]/g, '').trim();
-
+    let searchString = wordString.toLowerCase().replace(/[^A-Z^a-z^0-9^\s]/g, '');
     this.mapToOrignalString(searchString, wordString);
     this.insert(searchString);
 
@@ -43,7 +23,6 @@ export default class Trie {
   search(word) { 
     let traverseResult = this.traverse(word);
     let result = new Set(); // Remove duplicates. "Pokemon" and "Pikachu" can be the same original string
-    console.log(traverseResult)
     for (let r of traverseResult) { 
       result.add(this.getOriginalString(r));
     }
@@ -104,4 +83,22 @@ export default class Trie {
     }
   }
 
+  /*
+    For example:
+    "All-star Pikachu Pokemon" will be mapped to:
+
+    "allstar pikachu pokemon": "All-star Pikachu Pokemon"
+    "allstar": "All-star Pikachu Pokemon"
+    "pikachu": "All-star Pikachu Pokemon"
+    "pokemon": "All-star Pikachu Pokemon"
+    
+    */
+  mapToOrignalString(searchString, originalString) { 
+    if (!searchString || searchString.length === 0) return;
+    this.mapping.set(searchString, originalString);
+  }
+
+  getOriginalString(string) { 
+    return this.mapping.get(string);
+  }
 }
