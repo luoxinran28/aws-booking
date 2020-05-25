@@ -48,6 +48,12 @@ class Products extends Component {
     return { totalCount: allProducts.length, currentPageData: currentPagedData};
   }
 
+  static getDerivedStateFromProps(props, state) {
+    const products = getProducts();
+    const categories = getCategories();
+    return { products, categories };
+  }
+
   render() { 
     const { categories, searchCategory, pageSize, currentPage } = this.state;
     const { totalCount, currentPageData: products } = this.getPagedData();
@@ -79,12 +85,6 @@ class Products extends Component {
       </React.Fragment>
 
     );
-  }
-
-  componentDidMount() { 
-    const products = getProducts();
-    const categories = getCategories();
-    this.setState({ products, categories });
   }
 
 }

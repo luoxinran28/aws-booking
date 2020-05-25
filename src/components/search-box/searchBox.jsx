@@ -1,25 +1,27 @@
 import React, { Component } from 'react'
 import Autocomplete from '../autocomplete/autocomplete';
+import Trie from '../../utils/Trie';
 
 class SearchBox extends Component {
-  state = {
-    searchQuery: "",
-    suggestions: []
+  constructor(props) { 
+    super(props);
+    
+    let trie = new Trie();
+    this.state = {
+      searchQuery: "",
+      suggestions: [],
+      trie: trie
+    }
   }
 
   handleTextChange = (e) => {
-    const { options } = this.props;
-    const value = e.currentTarget.value;
-
+    const value = e.currentTarget.value.toLowerCase().replace(/[^A-Z^a-z^0-9^\s]/g, '');
     // Process suggestions from all options
-    let suggestions = options.filter(option => option.toLowerCase().startsWith(value));
-    // Set search query based on typed text
+    let suggestions = this.state.trie.search(value);
     this.setState({ searchQuery: value, suggestions});
   }
   
   handleSearch = () => {
-    // this.setState({ suggestions: [] });
-    // this.props.onSearch(this.state.searchQuery);
     this.searchInProps();
   }
 
@@ -34,7 +36,7 @@ class SearchBox extends Component {
   }
 
   handleKeyDown = (e) => {
-    if (e.keyCode === 27) { // Escapte
+    if (e.keyCode === 27) { // Escape
       this.setState({ suggestions: [] });
     }
     if (e.keyCode === 13) { // Enter
@@ -48,9 +50,18 @@ class SearchBox extends Component {
     this.props.onSearch(query);
   }
 
+  static getDerivedStateFromProps(props, state) {
+    const { trie } = state;
+    for (let option of props.options) { 
+      trie.add(option);
+    }
+
+    return { trie };
+  }
+
   render() { 
 
-    const { suggestions  } = this.state;
+    const { suggestions } = this.state;
 
     return (
       <React.Fragment>
