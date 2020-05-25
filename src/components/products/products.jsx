@@ -62,7 +62,7 @@ class Products extends Component {
           onReset={this.handleReset}
           onSearch={this.handleSearchChange}
         />
-        {totalCount === 0 && (<h1>The products ran out.</h1>)}
+        {totalCount === 0 && (<h1 className="title">The products ran out.</h1>)}
         {totalCount !== 0 && (
           <ResultList
             totalResultAmount={totalCount}
