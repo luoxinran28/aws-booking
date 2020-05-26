@@ -7,5 +7,5 @@ const options = ["apple", "book", "beauty", "bear", "cat", "cafe"];
 
 test('should show the dropdown option list by the given search value.', () => {
   const { container } = render(<Autocomplete searchValue={searchValue} options={options} />);
-  expect(container.querySelector("option")).toBeVisible();
+  expect(container.querySelector("li")).toBeVisible();
 })
