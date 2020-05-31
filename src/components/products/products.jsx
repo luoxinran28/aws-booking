@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import { getProducts } from '../../services/fakeProductsService'
 import { getCategories } from '../../services/fakeCategoriesService';
+
+import { productsRequested, productsDeleted } from './productsReducer.js';
+import StoreContext from '../../contexts/storeContext.js'
+
 import Pagination from '../pagination/pagination'
 import ResultList from '../result-list/resultList'
 import SearchBox from '../search-box/searchBox'
@@ -14,13 +18,18 @@ class Products extends Component {
     searchCategory: ""
   }
 
+  static contextType = StoreContext;
+
   handleReset = () => { 
-    this.setState({ products: getProducts(), searchCategory: "" });
+    const store = this.context;
+    store.dispatch(productsRequested());
   }
 
   handleDelete = (item) => {
-    const products = this.state.products.filter(p => p._id !== item._id);
-    this.setState({ products });
+    const store = this.context;
+    store.dispatch(productsDeleted({ item }));
+    // Products will be upaded in dispatch which subscribed in componentDidMount()
+    // this.setState({ products });
   }
 
   handlePageChange = (currentPage) => {
@@ -32,8 +41,7 @@ class Products extends Component {
   }
 
   getPagedData = () => {
-    const { products, pageSize, currentPage, searchCategory } = this.state;
-
+    const { products, pageSize, currentPage, searchCategory } = this.state;    
     let allProducts = products;
     if (searchCategory) { 
       let lowSearchCategory = searchCategory.toLowerCase();
@@ -81,9 +89,20 @@ class Products extends Component {
     );
   }
   componentDidMount() { 
-    const products = getProducts();
+    const store = this.context;
+    this.unsubscribe = store.subscribe(() => {
+      const productsInStore = store.getState().lists;
+      if (this.state.products !== productsInStore) { 
+        this.setState({ products: productsInStore});
+      }
+    }); // Subscribe will be called once the state is changed.
+    store.dispatch(productsRequested());
     const categories = getCategories();
-    this.setState({ products, categories });
+    this.setState({ categories });
+  }
+
+  componentWillUnmount() { 
+    this.unsubscribe();
   }
 }
  

@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import Products from '../products/products';
+import productsStore from '../products/productsStore.js';
+import StoreContext from '../../contexts/storeContext.js'
 
 class MainPage extends Component {
   state = {  }
   render() { 
     return (
       <main className="container"> 
-        <Products />
+        <StoreContext.Provider value={productsStore()}>
+          <Products />
+        </StoreContext.Provider>
       </main>
     );
   }
