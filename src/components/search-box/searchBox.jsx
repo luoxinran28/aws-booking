@@ -79,9 +79,9 @@ class SearchBox extends Component {
             className="btn btn-primary mx-1"
             onClick={this.handleSearch}
           >Search</button>
-          <button
+          {this.props.onReset() && (<button
             onClick={this.handleReset}
-            className="btn btn-primary mx-1">Reset</button>
+            className="btn btn-primary mx-1">Reset</button>)}
           <Autocomplete
             onSelect={this.handleSelectOption}
             options={suggestions}

@@ -8,6 +8,7 @@ class NavBar extends Component {
     return ( 
       <Navbar className="navbar-dark" bg="dark" expand="lg">
         <Navbar.Brand href="/">Home</Navbar.Brand>
+        <Navbar.Brand href="/contactus">Contact Us</Navbar.Brand>
       </Navbar>
     );
   }

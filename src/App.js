@@ -2,8 +2,9 @@ import React from 'react';
 import NavBar from './components/nav-bar/navBar';
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
-import MainPage from './components/mainpage/mainPage';
+import MainPage from './pages/mainpage/mainPage';
 import NotFound from './components/not-found/notFound';
+import ContactUs from './pages/contact-us/contactUs';
 
 import './App.scss';
 
@@ -14,6 +15,7 @@ function App() {
       <BrowserRouter>
         <Switch>
             <Route exact path="/" component={MainPage} />
+            <Route exact path="/contactus" component={ContactUs} />
             <Route path="/not-found" component={NotFound} />
             <Redirect to="/not-found" component={NotFound} />
         </Switch>

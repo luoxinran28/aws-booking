@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { getProducts } from '../../services/fakeProductsService'
-import { getCategories } from '../../services/fakeCategoriesService';
+import { getProducts } from '../../pages/mainpage/services/fakeProductsService'
+import { getCategories } from '../../pages/mainpage/services/fakeCategoriesService';
 
 import { productsRequested, productsDeleted } from './productsReducer.js';
 import StoreContext from '../../contexts/storeContext.js'
@@ -28,11 +28,16 @@ class Products extends Component {
   handleDelete = (item) => {
     const store = this.context;
     store.dispatch(productsDeleted({ item }));
-    // Products will be upaded in dispatch which subscribed in componentDidMount()
-    // this.setState({ products });
+  }
+
+  handleSave = (item) => {
+    window.cart = window.cart || {};
+    window.cart.count = window.cart.count || 0;
+    if(item) window.cart.count++;
   }
 
   handlePageChange = (currentPage) => {
+    if(currentPage <= 0 || currentPage > this.state.pageSize) return;
     this.setState({ currentPage });
   }
 
@@ -75,6 +80,7 @@ class Products extends Component {
           <ResultList
             totalResultAmount={totalCount}
             results={products}
+            onSave={this.handleSave}
             onDelete={this.handleDelete}
           />
         )}

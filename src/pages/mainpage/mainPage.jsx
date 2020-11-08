@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Products from '../products/products';
-import productsStore from '../products/productsStore.js';
+import Products from '../../components/products/products';
+import productsStore from '../../components/products/productsStore.js';
 import StoreContext from '../../contexts/storeContext.js'
 
 class MainPage extends Component {

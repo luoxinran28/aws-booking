@@ -4,10 +4,14 @@ import CTAList from '..//cta-list/ctaList'
 
 const ResultList = (props) => {
 
-  const { totalResultAmount, results, onDelete } = props;
+  const { totalResultAmount, results, onSave, onDelete } = props;
 
   function handleDelete(item) { 
     onDelete(item);
+  }
+
+  function handleSave(item) {
+    onSave(item);
   }
   
   function handleShowMore(e) {
@@ -38,6 +42,7 @@ const ResultList = (props) => {
                     <span className="show-more d-flex justify-content-center mb-2" onClick={handleShowMore}>Show More</span>
                   </div>
                   <CTAList
+                    onSave={() => handleSave(result)}
                     onDelete={() => handleDelete(result)}
                   />
                 </div>

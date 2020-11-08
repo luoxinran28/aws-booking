@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getProducts } from "../../services/fakeProductsService";
+import { getProducts } from "../../pages/mainpage/services/fakeProductsService";
 
 const slice = createSlice({
   name: "products",
